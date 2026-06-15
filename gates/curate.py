@@ -29,7 +29,7 @@ def load_facts() -> list[dict]:
         if f.name.startswith("_"):
             continue
         try:
-            d = yaml.safe_load(f.read_text())
+            d = yaml.safe_load(f.read_text(encoding="utf-8"))
         except yaml.YAMLError:
             print(f"  skip (invalid YAML): {f.name}")
             continue
@@ -76,8 +76,8 @@ def main(tag: str) -> int:
         else:
             held.append(d)
 
-    defs_text = DEFINITIONS.read_text() if DEFINITIONS.exists() else "(definitions.yml missing)"
-    rfe_text = RFE.read_text() if RFE.exists() else "(case/rfe.md missing)"
+    defs_text = DEFINITIONS.read_text(encoding="utf-8") if DEFINITIONS.exists() else "(definitions.yml missing)"
+    rfe_text = RFE.read_text(encoding="utf-8") if RFE.exists() else "(case/rfe.md missing)"
 
     parts = [
         f"# Context Pack — {tag}",
@@ -97,7 +97,7 @@ def main(tag: str) -> int:
         parts += [render_fact(d) + "\n" for d in included]
     else:
         parts.append(f"_No verified {tag}-tagged facts in the ledger yet._")
-    out.write_text("\n".join(parts) + "\n")
+    out.write_text("\n".join(parts) + "\n", encoding="utf-8")
 
     print(f"context pack -> {out.relative_to(REPO)}")
     print(f"  included: {len(included)} verified/derived {tag}-tagged facts")

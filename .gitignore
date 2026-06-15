@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+.claude/settings.local.json
+
+# === CASE DATA - never commit (repo is PUBLIC; contains PII / privileged material) ===
+# Raw evidence / exhibits
+corpus/exhibits/
+# Verified fact-sheets (extracted PII)
+corpus/ledger/
+# Staged / unverified evidence
+corpus/staging/
+# Single source of facts (legal name, salary, numbers)
+corpus/definitions.yml
+# RFE, petition, prior drafts
+case/
+# All pipeline output (drafts, components, critiques, context pack, matrix, risk register, defects)
+work/
+# Append-only run log
+trace/
