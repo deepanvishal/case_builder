@@ -1,3 +1,8 @@
+# Context Pack — FM
+_Generated 2026-06-15. Curated inputs only — not the full corpus._
+
+## Definitions (single source of truth — use VERBATIM)
+```yaml
 # definitions.yml â€” SINGLE SOURCE OF FACTUAL TRUTH
 # Field, peer group, and every key number stated ONCE. Every agent loads this and
 # uses these terms/figures VERBATIM. coherence_checker + gates.py enforce it.
@@ -11,8 +16,8 @@ beneficiary:
 
 field:
   # ONE favorable-but-defensible definition of "the field". Used identically everywhere.
-  definition: "Applied AI and machine learning for regulated decision-support: production-grade explainable AI (XAI) for patient-provider matching and other compliance-intensive healthcare decision systems, at the intersection of machine learning, healthcare data engineering, and regulatory governance."
-  scope_notes: "Field of endeavor is this narrow specialization; used for OCMS significance and Final Merits 'top small percentage'. High Salary compares against the OCCUPATION (SOC 15-2051 Lead/Senior/Principal Data Scientists) per Matter of Price 'similar work' - an occupational wage peer, NOT a broadening of the field. Industry convergence (multiple payers adopting matching) is framed as later validation of this specialization, never as evidence the field is broad. Hold the field narrow everywhere."
+  definition: "<one sentence, e.g. applied AI / data science for regulated healthcare decision systems>"
+  scope_notes: "<what is in / out of scope, if needed>"
 
 peer_group:
   # Who "top of field" is measured against. Correct occupation + senior tier only.
@@ -48,10 +53,18 @@ numbers:
 
 criteria_in_play:
   rfe_challenged: [OC, CR, HS]        # OCMS, Critical Role, High Salary
-  accepted: [JU, AU]                  # Judging + Authorship (RFE-accepted)
+  accepted: [<fill codes>]           # originally-accepted criteria
   # FM = Final Merits (the section being built)
 
 contribution:
   name: "Brighter Match"
   public_artifact: "US20230162844A1 (published patent application)"
   framing: "OCMS argued from the PUBLISHED patent + its forward citations â€” NOT the confidential deployment. Critical Role keeps the proprietary framing."
+```
+
+## RFE — governing language
+# RFE Response Notes
+<!-- Paste or summarise RFE text here. TODO: fill content. -->
+
+## Evidence set (0 verified facts tagged FM)
+_No verified FM-tagged facts in the ledger yet._

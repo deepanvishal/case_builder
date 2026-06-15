@@ -1,0 +1,40 @@
+# Copy to corpus/ledger/<ID>.yml, one per verified fact. Underscore-prefixed
+# files are skipped by the validator. ID convention: CRIT-NN (atomic), CRIT-DNN (derived).
+# CRIT in {OC, CR, HS, FM}.
+
+id: HS-00                      # required
+value: "$0.00"                # required - the fact as stated
+normalized: 0.0               # required IF value_type is number/date (enables the diff gate)
+value_type: number            # number | date | string | claim
+unit: USD/year                # optional
+label: "one-line description of what this fact is"   # required
+src:                          # required for non-derived facts
+  exhibit: E0                 # human-facing exhibit label
+  file: corpus/exhibits/E0_file.pdf
+  page: 1                     # pin a page OR locus for primary_exhibit
+  locus: "Box 1"
+src_type: primary_exhibit     # primary_exhibit | uscis_doc | user_analysis | agent_staged | derived
+trust: verified               # verified | staged | disputed | derived
+                              #   agent_staged MUST be staged/disputed until you verify it
+as_of: 2025-12-31             # optional - date the fact is true as-of
+vintage: ""                   # optional - data vintage for benchmarks (e.g. "BLS May 2025")
+confidence: 1.0               # optional - number in [0,1], meaningful for staged/derived
+criterion_tags: [HS, FM]      # required - non-empty, from {OC, CR, HS, FM}
+version: 1                    # optional - bump when superseding
+supersedes: ""                # optional - prior id@version this replaces
+status: active                # active | superseded | blocked
+
+# --- structured attributes: fill ONLY for facts the gates query ---
+# (salary benchmarks + the comp figure). Names must match the predicates EXACTLY.
+kind: ""            # benchmark   - marks a salary-benchmark fact
+comp_kind: ""       # total | base   - on the comp fact
+soc: ""             # 15-2051   - on a benchmark
+tier: ""            # lead | senior | principal   - on a benchmark
+peer_scope: ""      # top_tier | general   - on a benchmark
+role: ""            # primary | supporting   - how the benchmark is used
+
+# --- derived facts only: omit src, set src_type+trust=derived, add: ---
+# derivation:
+#   method: percentile_position
+#   inputs: [HS-01, HS-14]
+# depends_on: [HS-01, HS-14]

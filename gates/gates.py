@@ -12,7 +12,7 @@ from pathlib import Path
 
 import yaml
 
-RULES_DIR = Path(__file__).parent / "rules"
+RULES_DIR = Path(__file__).parent.parent / "rules"
 
 
 @dataclass
@@ -41,7 +41,7 @@ def _compile_categorical(banned: dict):
         if category == "meta":
             continue
         for e in entries:
-            compiled.append((category, re.compile(e["term"], re.I), e["fix"]))
+            compiled.append((category, re.compile(rf"\b(?:{e['term']})\b", re.I), e["fix"]))
     return compiled, banned["meta"]["severity"]
 
 
@@ -55,7 +55,7 @@ def format_lint(text: str, surface: str, banned: dict) -> list[Defect]:
                 id=f"LINT.{category}.{m.start()}",
                 severity=severity,
                 rule_violated=f"banned_categorical/{category}: '{m.group(0)}'",
-                target_agent="binder",
+                target_agent="synthesizer",
                 fix_instruction=fix,
                 affected=m.group(0),
             ))
@@ -123,7 +123,7 @@ def completeness_check(ledger, criterion, completeness):
                 id=f"COMP.{rule['id']}",
                 severity=rule["severity"],
                 rule_violated=f"completeness/{rule['id']}: not present",
-                target_agent="evidence_hunter",
+                target_agent="hunter",
                 fix_instruction=rule.get("basis", "supply the missing element"),
                 criterion=criterion,
             ))
@@ -168,7 +168,7 @@ def trigger_scan(pkg, triggers):
             fn = TRIGGER.get(t["id"])
             if fn is None:
                 dispatch.append({"id": t["id"], "engine": "deterministic",
-                                 "to_gate": "auditor", "route": t["route"],
+                                 "to_gate": "coherence_checker", "route": t["route"],
                                  "status": "predicate_unimplemented"})
             elif fn(pkg):
                 fired.append(Defect(
@@ -176,7 +176,7 @@ def trigger_scan(pkg, triggers):
                     rule_violated=f"trigger/{t['id']}", target_agent=t["route"],
                     fix_instruction=t.get("basis", ""), engine="deterministic"))
         else:
-            to = "adversarial_officer" if t["engine"] == "judgment" else "auditor"
+            to = "officer_critic" if t["engine"] == "judgment" else "coherence_checker"
             dispatch.append({"id": t["id"], "engine": t["engine"], "to_gate": to,
                              "route": t["route"], "severity": t["severity"]})
     return fired, dispatch
