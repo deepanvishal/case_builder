@@ -68,6 +68,13 @@ this file.
   the same occupation and locale, using objective same-field data — not averages, not a
   different occupation, not job-ad ranges (Price; Grimson; Muni; Strategati).
 
+## 6a. Field of endeavor vs. occupational wage peer (reconciliation)
+The field of endeavor for extraordinary ability is the narrow specialization (production-grade XAI for regulated healthcare decision-support); it is used for OCMS significance and the Final Merits "top small percentage." The High Salary comparison uses the broader recognized OCCUPATION (SOC 15-2051, Lead/Senior/Principal Data Scientists). This is not inconsistent, and the response must state why wherever both scopes appear:
+- Matter of Price requires objective earnings data for those performing "similar work"; published government wage data exists only at the occupational level, and USCIS rejected non-objective/crowdsourced figures. The occupation is the proper, data-supported comparator.
+- The occupational benchmark is the more CONSERVATIVE test, not a broadening of the field: the petitioner is measured against the entire, larger occupational pool rather than the narrow niche. Clearing the top tier of that broader pool is harder, and is strong evidence of top standing in the narrower specialization within it.
+- The salary peer group is an occupational proxy for the wage element only; it never redefines the field of endeavor. Industry convergence (multiple payers adopting matching) is later validation of the specialization, not evidence the field is broad.
+Hold the field narrow for OCMS/Final Merits; benchmark the occupation (conservatively) for salary; state the distinction explicitly so it cannot be read as having-it-both-ways.
+
 ## 7. Final merits determination
 - Meeting 3 criteria is necessary but NOT sufficient. Under Kazarian step two and the
   Chawathe standard, argue that the totality of the record — the criteria plus accepted
