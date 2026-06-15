@@ -1,0 +1,90 @@
+high_salary:
+  - id: HS.comp_total
+    present: "ledger has comp row, src_type=primary_exhibit"
+    satisfies: "is it TOTAL comp (base+bonus+equity), not base only?"
+    severity: blocker
+    basis: "RFE: salary, bonuses, stock options in top tier"
+  - id: HS.peer_correct
+    present: "benchmark row tagged soc=15-2051 AND tier in {lead,senior,principal}"
+    satisfies: "scoped to correct occupation AND senior tier, not general population?"
+    severity: blocker
+    basis: "RFE: wrong occupation (15-2041 Statisticians); Matter of Price"
+  - id: HS.top_of_field
+    present: "benchmark percentile >= 90 of the correct peer group"
+    satisfies: "comparison is to the TOP of the field, where petitioner claims to stand?"
+    severity: blocker
+    basis: "Matter of Price; Grimson; Muni"
+  - id: HS.source_objective
+    present: "all benchmark rows src_type in {gov, lca_disclosure}"
+    satisfies: "no job ads / crowdsourced as primary benchmark?"
+    severity: blocker
+    basis: "RFE: job ads rejected; Strategati"
+  - id: HS.location_time
+    present: "benchmark MSA + vintage fields populated"
+    satisfies: "worksite MSA justified AND benchmark year matches comp year?"
+    severity: warn
+    basis: "RFE: Jacksonville vs Tallahassee; same time period required"
+
+ocms:
+  - id: OC.contribution_named
+    present: "ledger has named contribution row"
+    satisfies: "the specific contribution is identified, not a job-duty summary?"
+    severity: blocker
+  - id: OC.field_level_significance
+    present: "impact metric row tagged scope=field"
+    satisfies: "impact is at the FIELD level, not just employer/client/internal?"
+    severity: blocker
+    basis: "RFE: not only value to an employer or internal project"
+  - id: OC.external_corroboration
+    present: ">=1 row src_type in {citation,press,standards,patent_by_other,adoption}"
+    satisfies: "independent third-party proof exists beyond expert letters?"
+    severity: blocker
+    basis: "RFE: independent documents requested"
+  - id: OC.expert_letters
+    present: "expert letter rows, author independent=true"
+    satisfies: "letters are detailed, corroborated, focused on field significance?"
+    severity: warn
+
+critical_role:
+  - id: CR.role_critical
+    present: "role row with hierarchy/authority evidence"
+    satisfies: "shows leading/critical role: reporting line, authority, dependent outcomes?"
+    severity: blocker
+  - id: CR.org_distinguished
+    present: ">=1 OBJECTIVE row on org reputation (ranking, award, market position)"
+    satisfies: "proves distinguished reputation, not just 'type of work' the org does?"
+    severity: blocker
+    basis: "RFE rejected this prong: only generally speaks to type of work"
+  - id: CR.division_nexus
+    present: "if claim via division -> division-distinction row exists"
+    satisfies: "division itself distinguished OR central to a distinguished org?"
+    severity: blocker
+    when: "claim_basis == division"
+  - id: CR.beyond_normal
+    present: "duties row"
+    satisfies: "role exceeded a normal employee function?"
+    severity: warn
+
+final_merits:
+  - id: FM.sustained
+    present: "temporal span row (earliest..latest dated recognition)"
+    satisfies: "acclaim is MAINTAINED over time, not a single past peak?"
+    severity: blocker
+    basis: "RFE: sustained acclaim must be maintained"
+  - id: FM.top_percentage
+    present: "percentile/standing row at field level"
+    satisfies: "evidence places petitioner in the small % at the very top?"
+    severity: blocker
+  - id: FM.totality_woven
+    present: "section references >=3 criteria + new evidence ids"
+    satisfies: "criteria + new evidence form ONE coherent narrative, not a list?"
+    severity: blocker
+  - id: FM.cross_consistency
+    present: "field, peer_group, role defined once in a shared definitions row"
+    satisfies: "field/peer-group/role identical across all sections?"
+    severity: blocker
+    basis: "inconsistent definitions = self-inflicted RFE trigger"
+  - id: FM.preponderance
+    present: "n/a"
+    satisfies: "whole record more-likely-than-not under Chawathe?"
+    severity: blocker

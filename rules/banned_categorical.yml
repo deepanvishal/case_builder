@@ -1,0 +1,33 @@
+meta:
+  applies_to: [ledger.claim, drafts.evidentiary_table, drafts.section_body]
+  severity:
+    table: blocker
+    narrative: warn
+
+conclusory:
+  - term: "world.?class|best.?in.?class|unparalleled|unrivall?ed"
+    fix: "state the ranking/percentile that establishes standing, cite ledger id"
+  - term: "leading expert|thought leader|luminary|renowned|pioneering"
+    fix: "name the role + objective recognition (citations, invited judging)"
+  - term: "groundbreaking|revolutionary|game.?chang(e|ing)|paradigm"
+    fix: "state the measurable field-level effect; cite external adoption"
+  - term: "extraordinary|exceptional"
+    fix: "delete the label; let the evidence carry it"
+
+hedge:
+  - term: "arguably|essentially|in many ways|to some extent"
+    fix: "delete; state the fact or cite"
+  - term: "numerous|several|many|various|a number of"
+    fix: "replace with the exact count from the ledger"
+  - term: "considered (to be|one of)|regarded as|seen as"
+    fix: "name who recognized it + the document; passive recognition is not evidence"
+  - term: "(may|could|might|can) (be|have|demonstrate)"
+    fix: "for facts in the record, use present indicative; reserve modals for argument only"
+
+unquantified_magnitude:
+  - term: "significant(ly)?|substantial(ly)?|considerabl[ey]|markedly"
+    fix: "attach the number: 'significantly higher' -> 'at the 90th percentile (HS-D20)'"
+  - term: "high(ly)?|elevated|premium|top.?tier"
+    fix: "bind to the benchmark id and the percentile it yields"
+  - term: "widely (adopted|used|cited|recognized)"
+    fix: "give the count/list + source; 'widely' is the claim USCIS rejected"

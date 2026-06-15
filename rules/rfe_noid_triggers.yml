@@ -1,0 +1,82 @@
+triggers:
+  - id: occupation_mismatch
+    detect: "benchmark soc != claimed occupation, OR occupation changed since filing w/o crosswalk row"
+    engine: deterministic
+    severity: blocker
+    route: legal_mapper
+    basis: "your 15-2041 -> 15-2051 shift; must be justified, not silent"
+
+  - id: average_not_peer
+    detect: "salary compared to general/average population percentile"
+    engine: deterministic
+    severity: blocker
+    route: steelman
+    basis: "the literal RFE kill-shot; Matter of Price"
+
+  - id: ad_as_benchmark
+    detect: "src_type=job_ad used outside 'supporting' role"
+    engine: deterministic
+    severity: blocker
+    route: evidence_hunter
+    basis: "Strategati; RFE struck E4-E6 equivalents"
+
+  - id: stale_evidence
+    detect: "benchmark vintage year < comp year, or > 24mo old"
+    engine: deterministic
+    severity: warn
+    route: evidence_hunter
+    basis: "you cited BLS May 2023 against 2025 comp"
+
+  - id: internal_only_ocms
+    detect: "all OCMS rows src_type in {employer,client,internal}"
+    engine: checklist
+    severity: blocker
+    route: evidence_hunter
+    basis: "RFE: external corroboration required"
+
+  - id: bare_org_reputation
+    detect: "CR.org_distinguished present but satisfies=false"
+    engine: judgment
+    severity: blocker
+    route: evidence_hunter
+    basis: "RFE phrasing: only speaks to type of work"
+
+  - id: expert_letters_only
+    detect: "criterion's only independent rows are expert_letter"
+    engine: checklist
+    severity: blocker
+    route: evidence_hunter
+
+  - id: consistency_break
+    detect: "field/peer_group/role defined differently across sections"
+    engine: judgment
+    severity: blocker
+    route: synthesizer
+    basis: "cross-criterion coherence; your highest-value gate"
+
+  - id: unsourced_number
+    detect: "figure in draft with no resolvable ledger src"
+    engine: deterministic
+    severity: blocker
+    route: binder
+
+  - id: final_merits_absent
+    detect: "no final_merits section, or FM items unmet"
+    engine: checklist
+    severity: blocker
+    route: synthesizer
+    basis: "RFE: meeting criteria alone != eligibility"
+
+  - id: coversheet_missing
+    detect: "assembled package lacks RFE coversheet as first page"
+    engine: deterministic
+    severity: blocker
+    route: binder
+    basis: "RFE: missing coversheet delays or denies"
+
+  - id: post_filing_overreliance
+    detect: "at-filing eligibility argued primarily on post-filing-dated rows"
+    engine: judgment
+    severity: warn
+    route: steelman
+    basis: "advisory per your notes, not a strict bar"
