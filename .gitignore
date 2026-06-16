@@ -25,3 +25,6 @@ case/
 work/
 # Append-only run log
 trace/
+
+# Strategy notes (candid strategy incl. weaknesses; public repo)
+reference/strategy_notes.md

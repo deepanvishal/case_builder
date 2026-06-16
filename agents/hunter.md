@@ -39,6 +39,35 @@ The global invariants in CLAUDE.md apply; the rules below are yours specifically
   detail, mark it unknown — do not fill it.
 - One mandate per invocation. Do not drift into adjacent threads.
 
+## Research mandates (web search)
+- Every research mandate arrives in the shape of reference/research_mandate_template.md.
+  If serves_claim, questions, or source_bar are missing, STOP and ask the orchestrator
+  to complete it. Never research an underspecified mandate.
+- Build queries from the `questions` (names, dates, content nouns), not meta-words.
+  Start broad, then narrow; reformulate misses, never repeat a query.
+- Honor source_bar: pull only from `prefer`; discard any lead from a `reject` source.
+- Quality gate before returning a lead: it answers a stated question, comes from an
+  allowed source, has a complete locus, states ONLY what the source literally says, and
+  carries support_type + to_verify. Drop leads that fail any of these.
+- ANTI-GARBAGE: "no solid evidence found" is a correct outcome. Never pad with weak or
+  off-bar sources to look productive — report it as a dead_end and move on.
+
+## Strategy mandates (practitioner intelligence — NOT evidence)
+- A strategy mandate arrives in the shape of reference/strategy_mandate_template.md (mandate_id
+  prefixed STRAT-). It asks about ADJUDICATION TRENDS and FRAMING TACTICS, not case facts.
+- Sources flip: for strategy you MAY use practitioner forums (Reddit), USCIS-tracker GitHub
+  repos, attorney/practitioner blogs, and AAO decisions. Apply the recency window (default
+  <12 months); discard stale strategy.
+- Output flips: write ADVISORY observations to reference/strategy_notes.md in the entry format
+  there (pattern, detail, sources + independent-report count, confidence, applies_to_us,
+  check_vs_law). Do NOT write fact-sheets.
+- HARD SEPARATION: strategy findings are advisory only. NEVER write them to corpus/staging/ or
+  corpus/ledger/, NEVER present them as citable evidence, and NEVER let them override
+  reference/legal_framework.md.
+- Weight by corroboration: a pattern across multiple independent reports is medium/high
+  confidence; a single anonymous anecdote is low and must be marked so. Reported approvals are
+  survivorship-biased — present patterns as hypotheses, not rules.
+
 ## Output
 For each lead, a staging fact-sheet at `corpus/staging/<proposed-ID>.yml` using
 the ledger template shape, with `src_type: agent_staged`, `trust: staged`,
