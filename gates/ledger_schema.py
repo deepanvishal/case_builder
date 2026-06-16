@@ -17,7 +17,7 @@ import yaml
 
 CRITERIA = {"OC", "CR", "HS", "FM", "JU", "AU"}   # + Judging, Authorship (accepted)
 VALUE_TYPES = {"number", "date", "string", "claim"}
-SRC_TYPES = {"primary_exhibit", "uscis_doc", "user_analysis", "agent_staged", "derived"}
+SRC_TYPES = {"primary_exhibit", "uscis_doc", "user_analysis", "agent_staged", "derived", "secondary_aggregator"}
 TRUST = {"verified", "staged", "disputed", "derived"}
 STATUS = {"active", "superseded", "blocked"}
 

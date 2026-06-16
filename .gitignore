@@ -28,3 +28,6 @@ trace/
 
 # Strategy notes (candid strategy incl. weaknesses; public repo)
 reference/strategy_notes.md
+
+# Rejected staged facts (kept with reasons; case data)
+corpus/rejected/
