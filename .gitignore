@@ -31,3 +31,6 @@ reference/strategy_notes.md
 
 # Rejected staged facts (kept with reasons; case data)
 corpus/rejected/
+
+# Letter gap spec (candid letter strategy + recommender names; public repo)
+reference/letter_gap_spec.md
